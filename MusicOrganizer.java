@@ -10,7 +10,7 @@ public class MusicOrganizer
 {
     // An ArrayList for storing the file names of music files.
     private ArrayList<String> files;
-        
+
     /**
      * Create a MusicOrganizer
      */
@@ -18,7 +18,7 @@ public class MusicOrganizer
     {
         files = new ArrayList<String>();
     }
-    
+
     /**
      * Add a file to the collection.
      * @param filename The file to be added.
@@ -27,7 +27,7 @@ public class MusicOrganizer
     {
         files.add(filename);
     }
-    
+
     /**
      * Return the number of files in the collection.
      * @return The number of files in the collection.
@@ -36,29 +36,30 @@ public class MusicOrganizer
     {
         return files.size();
     }
-    
+
     /**
      * List a file from the collection.
      * @param index The index of the file to be listed.
      */
     public void listFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)==false) {
             String filename = files.get(index);
             System.out.println(filename);
         }
     }
-    
+
     /**
      * Remove a file from the collection.
      * @param index The index of the file to be removed.
      */
     public void removeFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)== false) {
             files.remove(index);
         }
     }
+
     public void checkIndex(int indice)
     {
         if (indice < 0 || indice > files.size())
@@ -66,4 +67,16 @@ public class MusicOrganizer
             System.out.println("ERROR");
         }
     }
+
+    public boolean validIndex(int indice)
+    {
+        boolean valid = true;
+        if(indice < 0 || indice > files.size()) 
+        {
+            valid = false;
+        }
+        return valid;
+    }
+    
 }
+
